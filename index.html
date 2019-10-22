@@ -21,31 +21,29 @@
                 Search for a city:
                 <form class="form-inline my-2 my-lg-0">
                     <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-outline-success my-2 my-sm-0" id="city-search" type="submit">City Name</button>
+                    <button class="btn btn-outline-success my-2 my-sm-0" id="city-search" type="submit">City
+                        Name</button>
                 </form>
             </div>
             <div class="row">
                 <div class="col-12 main">
                     <div class="jumbotron jumbotron-fluid">
-                        <h1 class="display-9">City Title</h1>
-                        <p class="lead">
-                            TEMP: F
-                            <br>
-                            HUMDITY: %
-                            <br>
-                            WIND SPEED: MPH
-                            <br>
-                            UV INDEX:
-                        </p>
+                        <h1 id="main-title" class="display-9"></h1>
+                        <p id="main-temp" class="lead"></p>
+                        <p id="main-humidity" class="lead"></p>
+                        <p id="main-wind" class="lead"></p>
+                        <p id="main-UV" class="lead"></p>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-2 5-day">
                         <div class="card" style="width: 18rem;">
-                            <img src="..." class="card-img-top" alt="...">
+                            <img src="https://via.placeholder.com/150
+
+                            C/O https://placeholder.com/#How_To_Set_Image_Size" class="card-img-top" alt="...">
                             <div class="card-body">
-                                <h5 class="card-title">Card title</h5>
-                                <p class="card-text">
+                                <h5 id='5-day title' class="card-title">Card title</h5>
+                                <p id='5-day content' class="card-text">
                                     CITY TITLE
                                     <br>
                                     IMG
@@ -63,10 +61,57 @@
     </div>
 
 
-    <script src="https://code.jquery.com/jquery.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/js/bootstrap.bundle.min.js"></script>
     <!-- Code to the JavaScript File -->
-    <script src="weather.js"></script>
+    <script text="text/javascript">
+        // Variables
+        // var cityInput = $('#city-search')
+        var cityInput = "Stockholm"
+
+        var mainWeatherTitle = $('#main-title')
+        var mainWeatherTemp = $('#main-temp')
+        var mainWeatherHumidity = $('#main-humidity')
+        var mainWeatherWind = $('#main-wind')
+        var mainWeatherUV = $('#main-UV')
+
+        var fiveDayTitle = $('#5-day title');
+        var fiveDayContent = $('#5-day content')
+
+        var APIKey = "3a92bc0a0ca29575a3569a00c0268022";
+        var queryURL = "https://api.openweathermap.org/data/2.5/weather?" +
+            "q=" + cityInput + "&units=imperial&APPID=" + APIKey;
+
+
+        function renderMainData() {
+            $.ajax({
+                url: queryURL,
+                method: "GET"
+            })
+                .then(function (response) {
+
+                    // Log the queryURL
+                    console.log(queryURL);
+
+                    // Log the resulting object
+                    console.log(response);
+
+                    var main = response.name;
+                    var mainTemp = response.main.temp;
+                    var mainHumidity = response.main.humidity;
+                    var mainWind = response.wind.speed;
+                    //    UV is a seperate call putting in country for the time being
+                    var mainUv = response.sys.country;
+
+                    mainWeatherTitle.text(main);
+                    mainWeatherTemp.text('Temp: ' + mainTemp);
+                    mainWeatherHumidity.text('Humidity: ' + mainHumidity);
+                    mainWeatherWind.text('Wind Speed: ' + mainWind);
+                    mainWeatherUV.text('UV Index: ' + mainUv);
+                });
+        }
+        renderMainData();
+    </script>
 
 </body>
 
