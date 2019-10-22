@@ -20,10 +20,12 @@
             <div class='col-3'>
                 Search for a city:
                 <form class="form-inline my-2 my-lg-0">
-                    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                    <input class="form-control mr-sm-2" id='city-input' type="search" placeholder="Search"
+                        aria-label="Search">
                     <button class="btn btn-outline-success my-2 my-sm-0" id="city-search" type="submit">City
                         Name</button>
                 </form>
+                <ul id='citylist'></ul>
             </div>
             <div class="row">
                 <div class="col-12 main">
@@ -69,8 +71,10 @@
         // Variables
         var m = moment();
         var date = m.format('l')
-        // var cityInput = $('#city-search')
-        var cityInput = "Stockholm"
+        var citysearch = $('#city-search')
+        var cityInput = $('#city-input')
+        var city = "Stockholm"
+        var cities = [];
 
         // Main Content in Jumbotron
         var mainWeatherTitle = $('#main-title')
@@ -87,7 +91,7 @@
 
         var APIKey = "3a92bc0a0ca29575a3569a00c0268022";
         var queryURL = "https://api.openweathermap.org/data/2.5/weather?" +
-            "q=" + cityInput + "&units=imperial&APPID=" + APIKey;
+            "q=" + city + "&units=imperial&APPID=" + APIKey;
         // maybe seperate URLs for UV and 5-day?
 
         function renderMainData() {
@@ -118,6 +122,24 @@
                 });
         }
         renderMainData();
+
+        function storeCities() {
+            // Stringify and set "todos" key in localStorage to todos array
+            localStorage.setItem("cities", JSON.stringify(cities));
+        }
+
+        $("#city-search").on("click", function (event) {
+            event.preventDefault();
+            var cityText = cityInput.val();
+
+            if (cityText === "") {
+                return;
+            }
+            cities.push(cityText);
+            cityInput.val();
+            storeCities();
+        });
+
     </script>
 
 </body>
