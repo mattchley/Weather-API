@@ -38,11 +38,11 @@
                 <div class="row">
                     <div class="col-2 5-day">
                         <div class="card" style="width: 18rem;">
+                            <h5 id='5-day title' class="card-title">Card title</h5>
                             <img src="https://via.placeholder.com/150
 
                             C/O https://placeholder.com/#How_To_Set_Image_Size" class="card-img-top" alt="...">
                             <div class="card-body">
-                                <h5 id='5-day title' class="card-title">Card title</h5>
                                 <p id='5-day content' class="card-text">
                                     CITY TITLE
                                     <br>
@@ -63,25 +63,32 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
     <!-- Code to the JavaScript File -->
     <script text="text/javascript">
         // Variables
+        var m = moment();
+        var date = m.format('l')
         // var cityInput = $('#city-search')
         var cityInput = "Stockholm"
 
+        // Main Content in Jumbotron
         var mainWeatherTitle = $('#main-title')
         var mainWeatherTemp = $('#main-temp')
         var mainWeatherHumidity = $('#main-humidity')
         var mainWeatherWind = $('#main-wind')
         var mainWeatherUV = $('#main-UV')
 
+        // 5-Day Forecast in Cards
         var fiveDayTitle = $('#5-day title');
-        var fiveDayContent = $('#5-day content')
+        var fiveDayImage = $('#5-day img')
+        var fiveDayTemp = $('#5-day temp')
+        var fiveDayHUmidity = $('#5-day humidity')
 
         var APIKey = "3a92bc0a0ca29575a3569a00c0268022";
         var queryURL = "https://api.openweathermap.org/data/2.5/weather?" +
             "q=" + cityInput + "&units=imperial&APPID=" + APIKey;
-
+        // maybe seperate URLs for UV and 5-day?
 
         function renderMainData() {
             $.ajax({
@@ -103,7 +110,7 @@
                     //    UV is a seperate call putting in country for the time being
                     var mainUv = response.sys.country;
 
-                    mainWeatherTitle.text(main);
+                    mainWeatherTitle.text(main + " " + "(" + date + ")");
                     mainWeatherTemp.text('Temp: ' + mainTemp);
                     mainWeatherHumidity.text('Humidity: ' + mainHumidity);
                     mainWeatherWind.text('Wind Speed: ' + mainWind);
