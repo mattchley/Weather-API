@@ -130,5 +130,8 @@ A. Using bootstrap
         d. temp
         e. humidity
 B. Ajax functionality
-    1. Listener for search input
-    2. Function for ajax
+    1. Listener for search input (x)
+    2. Function for ajax (x)
+C. City Search List functionality
+
+

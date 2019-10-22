@@ -25,7 +25,7 @@
                     <button class="btn btn-outline-success my-2 my-sm-0" id="city-search" type="submit">City
                         Name</button>
                 </form>
-                <ul id='city-list'></ul>
+                <ul id='citylist'></ul>
             </div>
             <div class="row">
                 <div class="col-12 main">
@@ -42,7 +42,6 @@
                         <div class="card" style="width: 18rem;">
                             <h5 id='5-day title' class="card-title">Card title</h5>
                             <img src="https://via.placeholder.com/150
-
                             C/O https://placeholder.com/#How_To_Set_Image_Size" class="card-img-top" alt="...">
                             <div class="card-body">
                                 <p id='5-day content' class="card-text">
@@ -73,58 +72,39 @@
         var date = m.format('l')
         var citysearch = $('#city-search')
         var cityInput = $('#city-input')
-        var citylist = $('#city-list')
         var city = "Stockholm"
         var cities = [];
-
         // Main Content in Jumbotron
         var mainWeatherTitle = $('#main-title')
         var mainWeatherTemp = $('#main-temp')
         var mainWeatherHumidity = $('#main-humidity')
         var mainWeatherWind = $('#main-wind')
         var mainWeatherUV = $('#main-UV')
-
         // 5-Day Forecast in Cards
         var fiveDayTitle = $('#5-day title');
         var fiveDayImage = $('#5-day img')
         var fiveDayTemp = $('#5-day temp')
         var fiveDayHUmidity = $('#5-day humidity')
-
         var APIKey = "3a92bc0a0ca29575a3569a00c0268022";
         var queryURL = "https://api.openweathermap.org/data/2.5/weather?" +
             "q=" + city + "&units=imperial&APPID=" + APIKey;
         // maybe seperate URLs for UV and 5-day?
-
-        init();
-
-        function init() {
-            var storedCities = localStorage.getItem("cities");
-            if(storedCities !== null){
-               cities = storedCities
-           }
-            renderStoredCity();
-         }
-
         function renderMainData() {
             $.ajax({
                 url: queryURL,
                 method: "GET"
             })
                 .then(function (response) {
-
                     // Log the queryURL
                     console.log(queryURL);
-
                     // Log the resulting object
                     console.log(response);
-
                     var main = response.name;
                     var mainTemp = response.main.temp;
                     var mainHumidity = response.main.humidity;
                     var mainWind = response.wind.speed;
                     //    UV is a seperate call putting in country for the time being
                     var mainUv = response.sys.country;
-
                     mainWeatherTitle.text(main + " " + "(" + date + ")");
                     mainWeatherTemp.text('Temp: ' + mainTemp);
                     mainWeatherHumidity.text('Humidity: ' + mainHumidity);
@@ -133,37 +113,20 @@
                 });
         }
         renderMainData();
-
-        function renderStoredCity() {
-
-            // Render a new li for each todo
-            for (var i = 0; i < cities.length; i++) {
-                var storedCities = cities[i];
-                var li = $('<li>');
-                li.text(storedCities);
-                citylist.append(li);
-            }
-        }
-
-
         function storeCities() {
-            // Stringify and set "cities" key in localStorage to cities array
-            localStorage.setItem("cities", cities);
+            // Stringify and set "todos" key in localStorage to todos array
+            localStorage.setItem("cities", JSON.stringify(cities));
         }
-
         $("#city-search").on("click", function (event) {
             event.preventDefault();
             var cityText = cityInput.val();
-
             if (cityText === "") {
                 return;
             }
-            cities.push(cityText)
+            cities.push(cityText);
             cityInput.val();
             storeCities();
-            renderStoredCity();
         });
-
     </script>
 
 </body>
