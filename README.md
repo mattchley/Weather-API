@@ -110,20 +110,25 @@ How do you deliver this? Here are some guidelines:
 
 Step one layout
 A. Using bootstrap
-    1.navbar w/title "Weather Dashboard'
-    2.sidebar about 3-4 grid size
-        a. needs a search input area
+    1.navbar w/title "Weather Dashboard' 
+    <!-- text needs to be  centered -->
+    2.sidebar about 3 grid size (x)
+        a. needs a search input area (x)
         b. depository for all search items (buttons?)
     3.main display for search results
+    <!-- placed the formatting of the card on the HTML -->
         a. City w/date and image
         b. Temperature F
         c. Humidity %
         d. Wind Speed mph
         e. UV index number with color coordination
     4. 5-day forecast
+    <!-- placed the formatting of the card on the HTML -->
         a. 5-cards
         b. date
         c. images
         d. temp
         e. humidity
-B. 
+B. Ajax functionality
+    1. Listener for search input
+    2. Function for ajax

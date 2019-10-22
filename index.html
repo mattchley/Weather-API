@@ -10,48 +10,64 @@
 
 </head>
 
-<body>
-
-</body>
-
 <nav class="navbar navbar-light bg-light">
     <span class="navbar-brand mb-0 h1">Weather Dashboard</span>
 </nav>
 
-<div class="container">
-    <div class="row">
-        <div class='col-3'>
-            Search for a city:
-
-        </div>
-        <div class="col-9">
-            <div class="row">
-                <div class="col-12">
-                    City Title
-                    <br>
-                    Temp:
-                    <br>
-                    Humidity:
-                    <br>
-                    Wind Speed:
-                    <br>
-                    UV index:
-                </div>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class='col-3'>
+                Search for a city:
+                <form class="form-inline my-2 my-lg-0">
+                    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-success my-2 my-sm-0" id="city-search" type="submit">City Name</button>
+                </form>
             </div>
             <div class="row">
-                <div class="col-12">
-                    5-day Forecast Cards
-                    <br>
-                    Date
-                    <br>
-                    Image
-                    <br>
-                    Temp:
-                    <br>
-                    Humidity:
+                <div class="col-12 main">
+                    <div class="jumbotron jumbotron-fluid">
+                        <h1 class="display-9">City Title</h1>
+                        <p class="lead">
+                            TEMP: F
+                            <br>
+                            HUMDITY: %
+                            <br>
+                            WIND SPEED: MPH
+                            <br>
+                            UV INDEX:
+                        </p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-2 5-day">
+                        <div class="card" style="width: 18rem;">
+                            <img src="..." class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <h5 class="card-title">Card title</h5>
+                                <p class="card-text">
+                                    CITY TITLE
+                                    <br>
+                                    IMG
+                                    <br>
+                                    TEMP: F
+                                    <br>
+                                    HUMDITY: %
+                                </p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
+
+
+    <script src="https://code.jquery.com/jquery.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/js/bootstrap.bundle.min.js"></script>
+    <!-- Code to the JavaScript File -->
+    <script src="weather.js"></script>
+
+</body>
 
 </html>
