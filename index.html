@@ -93,20 +93,46 @@
         var APIKey = "3a92bc0a0ca29575a3569a00c0268022";
         var queryURL = "https://api.openweathermap.org/data/2.5/weather?" +
             "q=" + city + "&units=imperial&APPID=" + APIKey;
+
+
+        // seperate QueryURL option
+        // function buildQueryURL (){
+        //     var queryURL = "http://api.openweather.org/data/2.5/"
+        //     var queryParams = {"appid": "3a92bc0a0ca29575a3569a00c0268022"};
+        //     queryParams.q = $('#city-input')
+        //         .val()
+        //         .trim();
+
+
+        // };
+
+
+        // // for 5-day forecast
+        // "http://api.openweathermap.org/data/2.5/forecast?lat=" + lat + "&lon="+ lon;
+
+
         // maybe seperate URLs for UV and 5-day?
 
-        init();
+        // init();
 
-        function init() {
-            var storedCities = localStorage.getItem("cities");
-            if(storedCities !== null){
-               cities = storedCities
-           }
-            renderStoredCity();
-         }
+        // function init() {
+        //     // Get stored cities from localStorage
+        //     // Parsing the JSON string to an object
+        //     var storedCities = localStorage.getItem("cities");
+
+        //     // If cities were retrieved from localStorage, update the cities array to it
+        //     if (storedCities !== null) {
+        //         cities = storedCities;
+        //     }
+
+        //     // Render cities to the DOM
+        //     // renderStoredCity();
+        // }
+
 
         function renderMainData() {
             $.ajax({
+
                 url: queryURL,
                 method: "GET"
             })
@@ -124,13 +150,30 @@
                     var mainWind = response.wind.speed;
                     //    UV is a seperate call putting in country for the time being
                     var mainUv = response.sys.country;
+                    var lat = response.coord.lat;
+                    var lon = response.coord.lon;
+                    var uvURL = "http://api.openweathermap.org/data/2.5/uvi?appid=3a92bc0a0ca29575a3569a00c0268022" + "&lat=" + lat + "&lon=" + lon;
 
                     mainWeatherTitle.text(main + " " + "(" + date + ")");
                     mainWeatherTemp.text('Temp: ' + mainTemp);
                     mainWeatherHumidity.text('Humidity: ' + mainHumidity);
                     mainWeatherWind.text('Wind Speed: ' + mainWind);
                     mainWeatherUV.text('UV Index: ' + mainUv);
+
+                    $.ajax({
+
+                        url: uvURL,
+                        method: "GET"
+                    })
+                        .then(function (response) {
+
+                            var uvResult = response.value;
+                            mainWeatherUV.text('UV Index: ' + uvResult);
+                            console.log (response)
+                        })
                 });
+
+
         }
         renderMainData();
 
@@ -148,13 +191,12 @@
 
         function storeCities() {
             // Stringify and set "cities" key in localStorage to cities array
-            localStorage.setItem("cities", cities);
+            localStorage.setItem("cities", JSON.stringify(cities));
         }
 
         $("#city-search").on("click", function (event) {
             event.preventDefault();
             var cityText = cityInput.val();
-
             if (cityText === "") {
                 return;
             }
@@ -162,6 +204,7 @@
             cityInput.val();
             storeCities();
             renderStoredCity();
+
         });
 
     </script>
