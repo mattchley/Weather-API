@@ -169,13 +169,42 @@
 
                             var uvResult = response.value;
                             mainWeatherUV.text('UV Index: ' + uvResult);
-                            console.log (response)
+                            console.log(response)
                         })
                 });
 
 
         }
         renderMainData();
+
+        function renderFiveDay() {
+            $.ajax({
+
+                url: queryURL,
+                method: "GET"
+            })
+                .then(function (response) {
+                    var lat = response.coord.lat;
+                    var lon = response.coord.lon;
+                    var fiveURL = "http://api.openweathermap.org/data/2.5/forecast?appid=3a92bc0a0ca29575a3569a00c0268022&" + "&lat=" + lat + "&lon=" + lon
+                    $.ajax({
+
+                        url: fiveURL,
+                        method: "GET"
+                    })
+                        .then(function (response) {
+                            console.log(response)
+                            for (i = 0; i < 5; i++) {
+                                var data = response.list[i]
+
+                                // put card class and details here
+                            }
+                        })
+                })
+
+
+        }
+        renderFiveDay();
 
         function renderStoredCity() {
 
