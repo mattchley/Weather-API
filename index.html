@@ -28,9 +28,9 @@
                 <ul id='city-list'></ul>
             </div>
             <div class="row">
-                <div class="col-9 main">
-                    <div class="jumbotron jumbotron-fluid">
-                        <h1 id="main-title" class="display-9"></h1>
+                <div class="col-12 main">
+                    <div class="jumbotron">
+                        <h1 id="main-title" class="display-4"></h1>
                         <p id="main-temp" class="lead"></p>
                         <p id="main-humidity" class="lead"></p>
                         <p id="main-wind" class="lead"></p>
@@ -38,208 +38,129 @@
                     </div>
                 </div>
             </div>
-                <div class="row">
-                    <div class="col-1 5-day">
-                        <div class="card" style="width: 18rem;">
-                            <h5 id="five-title-one" class="card-title">Card title</h5>
-                            <img src="https://via.placeholder.com/150
-
-                            C/O https://placeholder.com/#How_To_Set_Image_Size" class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <p id="five-temp-one" class="lead"></p>
-                                <p id="five-humidity-one" class="lead"></p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-1 5-day">
-                        <div class="card" style="width: 18rem;">
-                            <h5 id="five-title-two" class="card-title">Card title</h5>
-                            <img src="https://via.placeholder.com/150
-
-                            C/O https://placeholder.com/#How_To_Set_Image_Size" class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <p id="five-temp-two" class="lead"></p>
-                                <p id="five-humidity-two" class="lead"></p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-1 5-day">
-                        <div class="card" style="width: 18rem;">
-                            <h5 id="five-title-three" class="card-title">Card title</h5>
-                            <img src="https://via.placeholder.com/150
-
-                            C/O https://placeholder.com/#How_To_Set_Image_Size" class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <p id="five-temp-three" class="lead"></p>
-                                <p id="five-humidity-three" class="lead"></p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-1 5-day">
-                        <div class="card" style="width: 18rem;">
-                            <h5 id="five-title-four" class="card-title">Card title</h5>
-                            <img src="https://via.placeholder.com/150
-
-                            C/O https://placeholder.com/#How_To_Set_Image_Size" class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <p id="five-temp-four" class="lead"></p>
-                                <p id="five-humidity-four" class="lead"></p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-1 5-day">
-                        <div class="card" style="width: 18rem;">
-                            <h5 id="five-title-five" class="card-title">Card title</h5>
-                            <img src="https://via.placeholder.com/150
-
-                            C/O https://placeholder.com/#How_To_Set_Image_Size" class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <p id="five-temp-five" class="lead"></p>
-                                <p id="five-humidity-five" class="lead"></p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+            <div id="5-day-content" class="row">
 
             </div>
         </div>
+    </div>
 
 
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-        <script
-            src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/js/bootstrap.bundle.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
-        <!-- Code to the JavaScript File -->
-        <script text="text/javascript">
-            // Variables
-            var m = moment();
-            var date = m.format('l')
-            var citysearch = $('#city-search')
-            var cityInput = $('#city-input')
-            var citylist = $('#city-list')
-            var city = "Stockholm"
-            var cities = [];
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+    <!-- Code to the JavaScript File -->
+    <script text="text/javascript">
+        // Variables
+        var m = moment();
+        var date = m.format('l')
+        var citysearch = $('#city-search')
+        var cityInput = $('#city-input')
+        var citylist = $('#city-list')
+        var city = "Stockholm"
+        var cities = [];
 
-            // Main Content in Jumbotron
-            var mainWeatherTitle = $('#main-title')
-            var mainWeatherTemp = $('#main-temp')
-            var mainWeatherHumidity = $('#main-humidity')
-            var mainWeatherWind = $('#main-wind')
-            var mainWeatherUV = $('#main-UV')
+        // Main Content in Jumbotron
+        var mainWeatherTitle = $('#main-title')
+        var mainWeatherTemp = $('#main-temp')
+        var mainWeatherHumidity = $('#main-humidity')
+        var mainWeatherWind = $('#main-wind')
+        var mainWeatherUV = $('#main-UV')
 
-            // 5Day content
-            var fiveWeatherTitleOne = $('#five-title-one');
-            var fiveWeatherTempOne = $('#five-temp-one');
-            var fiveWeatherHumidityOne = $('#five-humidity-one');
+        // 5Day content
+        var fiveWeatherTitleOne = $('#five-title-one');
+        var fiveWeatherTempOne = $('#five-temp-one');
+        var fiveWeatherHumidityOne = $('#five-humidity-one');
 
-            var fiveWeatherTitleTwo = $('#five-title-two');
-            var fiveWeatherTempTwo = $('#five-temp-two');
-            var fiveWeatherHumidityTwo = $('#five-temp-two');
+        var fiveWeatherTitleTwo = $('#five-title-two');
+        var fiveWeatherTempTwo = $('#five-temp-two');
+        var fiveWeatherHumidityTwo = $('#five-temp-two');
 
-            var fiveWeatherTitleThree = $('#five-title-three');
-            var fiveWeatherTempThree = $('#five-temp-three');
-            var fiveWeatherHumidityThree = $('#five-humidity-three');
+        var fiveWeatherTitleThree = $('#five-title-three');
+        var fiveWeatherTempThree = $('#five-temp-three');
+        var fiveWeatherHumidityThree = $('#five-humidity-three');
 
-            var fiveWeatherTitleFour = $('#five-title-four');
-            var fiveWeatherTempFour = $('#five-temp-four');
-            var fiveWeatherHumidityFour = $('#five-humidity-four');
+        var fiveWeatherTitleFour = $('#five-title-four');
+        var fiveWeatherTempFour = $('#five-temp-four');
+        var fiveWeatherHumidityFour = $('#five-humidity-four');
 
-            var fiveWeatherTitleFive = $('#five-title-five');
-            var fiveWeatherTempFive = $('#five-temp-five');
-            var fiveWeatherHumidityFive = $('#five-humidityfive');
+        var fiveWeatherTitleFive = $('#five-title-five');
+        var fiveWeatherTempFive = $('#five-temp-five');
+        var fiveWeatherHumidityFive = $('#five-humidityfive');
 
-            var APIKey = "3a92bc0a0ca29575a3569a00c0268022";
-            var queryURL = "https://api.openweathermap.org/data/2.5/weather?" +
-                "q=" + city + "&units=imperial&APPID=" + APIKey;
-
-
-            // seperate QueryURL option
-            // function buildQueryURL (){
-            //     var queryURL = "http://api.openweather.org/data/2.5/"
-            //     var queryParams = {"appid": "3a92bc0a0ca29575a3569a00c0268022"};
-            //     queryParams.q = $('#city-input')
-            //         .val()
-            //         .trim();
+        var APIKey = "3a92bc0a0ca29575a3569a00c0268022";
+        var queryURL = "https://api.openweathermap.org/data/2.5/weather?" +
+            "q=" + city + "&units=imperial&APPID=" + APIKey;
 
 
-            // };
+        // init();
+
+        // function init() {
+        //     // Get stored cities from localStorage
+        //     // Parsing the JSON string to an object
+        //     var storedCities = localStorage.getItem("cities");
+
+        //     // If cities were retrieved from localStorage, update the cities array to it
+        //     if (storedCities !== null) {
+        //         cities = storedCities;
+        //     }
+
+        //     // Render cities to the DOM
+        //     // renderStoredCity();
+        // }
 
 
-            // // for 5-day forecast
-            // "http://api.openweathermap.org/data/2.5/forecast?lat=" + lat + "&lon="+ lon;
+        function renderMainData() {
+            $.ajax({
 
+                url: queryURL,
+                method: "GET"
+            })
+                .then(function (response) {
 
-            // maybe seperate URLs for UV and 5-day?
+                    // Log the queryURL
+                    console.log(queryURL);
 
-            // init();
+                    // Log the resulting object
+                    console.log(response);
 
-            // function init() {
-            //     // Get stored cities from localStorage
-            //     // Parsing the JSON string to an object
-            //     var storedCities = localStorage.getItem("cities");
+                    var main = response.name;
+                    var mainTemp = response.main.temp;
+                    var mainHumidity = response.main.humidity;
+                    var mainWind = response.wind.speed;
+                    var img = $('<img>');
 
-            //     // If cities were retrieved from localStorage, update the cities array to it
-            //     if (storedCities !== null) {
-            //         cities = storedCities;
-            //     }
+                    //    UV is a seperate call, Variables here
+                    var lat = response.coord.lat;
+                    var lon = response.coord.lon;
+                    var uvURL = "http://api.openweathermap.org/data/2.5/uvi?appid=3a92bc0a0ca29575a3569a00c0268022" + "&lat=" + lat + "&lon=" + lon;
 
-            //     // Render cities to the DOM
-            //     // renderStoredCity();
-            // }
+                    // Generate content
+                    // placeholder while i look for the image src
+                    // img.attr('src', response.weather[0].icon)
 
+                    mainWeatherTitle.text(main + " " + "(" + date + ")");
+                    mainWeatherTemp.text('Temp: ' + mainTemp);
+                    mainWeatherHumidity.text('Humidity: ' + mainHumidity);
+                    mainWeatherWind.text('Wind Speed: ' + mainWind);
 
-            function renderMainData() {
-                $.ajax({
+                    $.ajax({
 
-                    url: queryURL,
-                    method: "GET"
-                })
-                    .then(function (response) {
+                        url: uvURL,
+                        method: "GET"
+                    })
+                        .then(function (response) {
 
-                        // Log the queryURL
-                        console.log(queryURL);
-
-                        // Log the resulting object
-                        console.log(response);
-
-                        var main = response.name;
-                        var mainTemp = response.main.temp;
-                        var mainHumidity = response.main.humidity;
-                        var mainWind = response.wind.speed;
-                        var img = $('<img>');
-
-                        //    UV is a seperate call, Variables here
-                        var lat = response.coord.lat;
-                        var lon = response.coord.lon;
-                        var uvURL = "http://api.openweathermap.org/data/2.5/uvi?appid=3a92bc0a0ca29575a3569a00c0268022" + "&lat=" + lat + "&lon=" + lon;
-
-                        // Generate content
-                        // placeholder while i look for the image src
-                        // img.attr('src', response.weather[0].icon)
-
-                        mainWeatherTitle.text(main + " " + "(" + date + ")");
-                        mainWeatherTemp.text('Temp: ' + mainTemp);
-                        mainWeatherHumidity.text('Humidity: ' + mainHumidity);
-                        mainWeatherWind.text('Wind Speed: ' + mainWind);
-
-                        $.ajax({
-
-                            url: uvURL,
-                            method: "GET"
+                            var uvResult = response.value;
+                            mainWeatherUV.text('UV Index: ' + uvResult);
+                            console.log(response)
                         })
-                            .then(function (response) {
-
-                                var uvResult = response.value;
-                                mainWeatherUV.text('UV Index: ' + uvResult);
-                                console.log(response)
-                            })
-                    });
+                });
 
 
-            }
-            renderMainData();
+        }
+        renderMainData();
 
-            function renderFiveDay() {
+        function renderFiveDay() {
             $.ajax({
 
                 url: queryURL,
@@ -248,6 +169,7 @@
                 .then(function (response) {
                     var lat = response.coord.lat;
                     var lon = response.coord.lon;
+                    var fiveDayContent = $("#5-day-content")
 
                     var fiveURL = "http://api.openweathermap.org/data/2.5/forecast?appid=3a92bc0a0ca29575a3569a00c0268022&" + "&lat=" + lat + "&lon=" + lon
                     $.ajax({
@@ -257,51 +179,72 @@
                     })
                         .then(function (response) {
                             console.log(response)
-                            var fiveDayTitleOne = response.list[0].dt_txt;
-                            var fiveDayTempOne = response.list[0].main.temp;
-                            var fiveDayHumidityOne = response.list[0].main.humidity;
+                            // only generates partially will need a for loop to work properly i think
+                            for (i = 0; i < 4; i++) {
+                                var data = response.list[i]
+                                var fiveDayTitle = $('<h5>');
+                                var fiveDayTemp = $('<p>');
+                                var fiveDayHumidity = $('<p>');
+                                var col = $('<div>')
+                                var card = $('<div>')
 
-                            var fiveDayTitleTwo = response.list[1].dt_txt;
-                            var fiveDayTempTwo = response.list[1].main.temp;
-                            var fiveDayHumidityTwo = response.list[1].main.humidity;
+                                col.attr('class', 'col-2')
+                                card.attr('class', 'card')
 
-                            var fiveDayTitleThree = response.list[2].dt_txt;
-                            var fiveDayTempThree = response.list[2].main.temp;
-                            var fiveDayHumidityThree = response.list[2].main.humidity;
+                                fiveDayTitle.text(response.list[i].dt_txt)
+                                fiveDayTemp.text(response.list[i].main.temp)
+                                fiveDayHumidity.text(response.list[i].main.humidity)
 
-                            var fiveDayTitleFour = response.list[3].dt_txt;
-                            var fiveDayTempFour = response.list[3].main.temp;
-                            var fiveDayHumidityFour = response.list[3].main.humidity;
+                                card.append(fiveDayTitle)
+                                card.append(fiveDayTemp)
+                                card.append(fiveDayHumidity)
 
-                            var fiveDayTitleFive = response.list[4].dt_txt;
-                            var fiveDayTempFive = response.list[4].main.temp;
-                            var fiveDayHumidityFive = response.list[4].main.humidity;
+                                col.append(card)
+                                fiveDayContent.append(col)
 
-                            fiveWeatherTitleOne.text(fiveDayTitleOne)
-                            fiveWeatherTempOne.text('Temp: ' + fiveDayTempOne + 'F')
-                            fiveWeatherHumidityOne.text('Humidity: ' + fiveDayHumidityOne + '%')
-                            
-                            fiveWeatherTitleTwo.text(fiveDayTitleTwo)
-                            fiveWeatherTempTwo.text('Temp: ' + fiveDayTempTwo + 'F')
-                            fiveWeatherHumidityTwo.text('Humidity: ' + fiveDayHumidityTwo + '%')
-                            
-                            fiveWeatherTitleThree.text(fiveDayTitleThree)
-                            fiveWeatherTempThree.text('Temp: ' + fiveDayTempThree + 'F')
-                            fiveWeatherHumidityThre.text('Humidity: ' + fiveDayHumidityThree + '%')
-                            
-                            fiveWeatherTitleFour.text(fiveDayTitleFour)
-                            fiveWeatherTempFour.text('Temp: ' + fiveDayTempFour + 'F')
-                            fiveWeatherHumidityFour.text('Humidity: ' + fiveDayHumidityFour + '%')
-                            
-                            fiveWeatherTitleFive.text(fiveDayTitleFive)
-                            fiveWeatherTempFive.text('Temp: ' + fiveDayTempFive + 'F')
-                            fiveWeatherHumidityFive.text('Humidity: ' + fiveDayHumidityFive + '%')
+                            }
 
-                            // for (i = 0; i < 5; i++) {
-                            //     var data = response.list[i]
+                            // var fiveDayTitleOne = response.list[0].dt_txt;
+                            // var fiveDayTempOne = response.list[0].main.temp;
+                            // var fiveDayHumidityOne = response.list[0].main.humidity;
 
-                            //     // put card class and details here
-                            // }
+                            // var fiveDayTitleTwo = response.list[1].dt_txt;
+                            // var fiveDayTempTwo = response.list[1].main.temp;
+                            // var fiveDayHumidityTwo = response.list[1].main.humidity;
+
+                            // var fiveDayTitleThree = response.list[2].dt_txt;
+                            // var fiveDayTempThree = response.list[2].main.temp;
+                            // var fiveDayHumidityThree = response.list[2].main.humidity;
+
+                            // var fiveDayTitleFour = response.list[3].dt_txt;
+                            // var fiveDayTempFour = response.list[3].main.temp;
+                            // var fiveDayHumidityFour = response.list[3].main.humidity;
+
+                            // var fiveDayTitleFive = response.list[4].dt_txt;
+                            // var fiveDayTempFive = response.list[4].main.temp;
+                            // var fiveDayHumidityFive = response.list[4].main.humidity;
+
+                            // fiveWeatherTitleOne.text(fiveDayTitleOne)
+                            // fiveWeatherTempOne.text('Temp: ' + fiveDayTempOne + 'F')
+                            // fiveWeatherHumidityOne.text('Humidity: ' + fiveDayHumidityOne + '%')
+
+                            // fiveWeatherTitleTwo.text(fiveDayTitleTwo)
+                            // fiveWeatherTempTwo.text('Temp: ' + fiveDayTempTwo + 'F')
+                            // fiveWeatherHumidityTwo.text('Humidity: ' + fiveDayHumidityTwo + '%')
+
+                            // fiveWeatherTitleThree.text(fiveDayTitleThree)
+                            // fiveWeatherTempThree.text('Temp: ' + fiveDayTempThree + 'F')
+                            // fiveWeatherHumidityThre.text('Humidity: ' + fiveDayHumidityThree + '%')
+
+                            // fiveWeatherTitleFour.text(fiveDayTitleFour)
+                            // fiveWeatherTempFour.text('Temp: ' + fiveDayTempFour + 'F')
+                            // fiveWeatherHumidityFour.text('Humidity: ' + fiveDayHumidityFour + '%')
+
+                            // fiveWeatherTitleFive.text(fiveDayTitleFive)
+                            // fiveWeatherTempFive.text('Temp: ' + fiveDayTempFive + 'F')
+                            // fiveWeatherHumidityFive.text('Humidity: ' + fiveDayHumidityFive + '%')
+
+
                         })
                 })
 
@@ -309,37 +252,37 @@
         }
         renderFiveDay();
 
-            function renderStoredCity() {
+        function renderStoredCity() {
 
-                // Render a new li for each todo
-                for (var i = 0; i < cities.length; i++) {
-                    var storedCities = cities[i];
-                    var li = $('<li>');
-                    li.text(storedCities);
-                    citylist.append(li);
-                }
+            // Render a new li for each todo
+            for (var i = 0; i < cities.length; i++) {
+                var storedCities = cities[i];
+                var li = $('<li>');
+                li.text(storedCities);
+                citylist.append(li);
             }
+        }
 
 
-            function storeCities() {
-                // Stringify and set "cities" key in localStorage to cities array
-                localStorage.setItem("cities", JSON.stringify(cities));
+        function storeCities() {
+            // Stringify and set "cities" key in localStorage to cities array
+            localStorage.setItem("cities", JSON.stringify(cities));
+        }
+
+        $("#city-search").on("click", function (event) {
+            event.preventDefault();
+            var cityText = cityInput.val();
+            if (cityText === "") {
+                return;
             }
+            cities.push(cityText)
+            cityInput.val();
+            storeCities();
+            renderStoredCity();
 
-            $("#city-search").on("click", function (event) {
-                event.preventDefault();
-                var cityText = cityInput.val();
-                if (cityText === "") {
-                    return;
-                }
-                cities.push(cityText)
-                cityInput.val();
-                storeCities();
-                renderStoredCity();
+        });
 
-            });
-
-        </script>
+    </script>
 
 </body>
 

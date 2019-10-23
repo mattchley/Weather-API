@@ -102,3 +102,74 @@ $("#city-search").on("click", function (event) {
         method: "GET"
     }).then(updatePage);
 });
+
+5 display
+function renderFiveDay() {
+        //     $.ajax({
+
+        //         url: queryURL,
+        //         method: "GET"
+        //     })
+        //         .then(function (response) {
+        //             var lat = response.coord.lat;
+        //             var lon = response.coord.lon;
+
+        //             var fiveURL = "http://api.openweathermap.org/data/2.5/forecast?appid=3a92bc0a0ca29575a3569a00c0268022&" + "&lat=" + lat + "&lon=" + lon
+        //             $.ajax({
+
+        //                 url: fiveURL,
+        //                 method: "GET"
+        //             })
+        //                 .then(function (response) {
+        //                     console.log(response)
+        //                     var fiveDayTitleOne = response.list[0].dt_txt;
+        //                     var fiveDayTempOne = response.list[0].main.temp;
+        //                     var fiveDayHumidityOne = response.list[0].main.humidity;
+
+        //                     var fiveDayTitleTwo = response.list[1].dt_txt;
+        //                     var fiveDayTempTwo = response.list[1].main.temp;
+        //                     var fiveDayHumidityTwo = response.list[1].main.humidity;
+
+        //                     var fiveDayTitleThree = response.list[2].dt_txt;
+        //                     var fiveDayTempThree = response.list[2].main.temp;
+        //                     var fiveDayHumidityThree = response.list[2].main.humidity;
+
+        //                     var fiveDayTitleFour = response.list[3].dt_txt;
+        //                     var fiveDayTempFour = response.list[3].main.temp;
+        //                     var fiveDayHumidityFour = response.list[3].main.humidity;
+
+        //                     var fiveDayTitleFive = response.list[4].dt_txt;
+        //                     var fiveDayTempFive = response.list[4].main.temp;
+        //                     var fiveDayHumidityFive = response.list[4].main.humidity;
+
+        //                     fiveWeatherTitleOne.text(fiveDayTitleOne)
+        //                     fiveWeatherTempOne.text('Temp: ' + fiveDayTempOne + 'F')
+        //                     fiveWeatherHumidityOne.text('Humidity: ' + fiveDayHumidityOne + '%')
+                            
+        //                     fiveWeatherTitleTwo.text(fiveDayTitleTwo)
+        //                     fiveWeatherTempTwo.text('Temp: ' + fiveDayTempTwo + 'F')
+        //                     fiveWeatherHumidityTwo.text('Humidity: ' + fiveDayHumidityTwo + '%')
+                            
+        //                     fiveWeatherTitleThree.text(fiveDayTitleThree)
+        //                     fiveWeatherTempThree.text('Temp: ' + fiveDayTempThree + 'F')
+        //                     fiveWeatherHumidityThre.text('Humidity: ' + fiveDayHumidityThree + '%')
+                            
+        //                     fiveWeatherTitleFour.text(fiveDayTitleFour)
+        //                     fiveWeatherTempFour.text('Temp: ' + fiveDayTempFour + 'F')
+        //                     fiveWeatherHumidityFour.text('Humidity: ' + fiveDayHumidityFour + '%')
+                            
+        //                     fiveWeatherTitleFive.text(fiveDayTitleFive)
+        //                     fiveWeatherTempFive.text('Temp: ' + fiveDayTempFive + 'F')
+        //                     fiveWeatherHumidityFive.text('Humidity: ' + fiveDayHumidityFive + '%')
+
+        //                     // for (i = 0; i < 5; i++) {
+        //                     //     var data = response.list[i]
+
+        //                     //     // put card class and details here
+        //                     // }
+        //                 })
+        //         })
+
+
+        // }
+        // renderFiveDay();

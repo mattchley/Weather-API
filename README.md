@@ -117,13 +117,14 @@ A. Using bootstrap
         b. depository for all search items (buttons?)
     3.main display for search results
     <!-- placed the formatting of the card on the HTML -->
-        a. City w/date and image
-        b. Temperature F
-        c. Humidity %
-        d. Wind Speed mph
-        e. UV index number with color coordination
+        a. City w/date(x)
+        b. Temperature F(x)
+        c. Humidity %(x)
+        d. Wind Speed mph(x)
+        e. UV index number with color coordination(x)
+        f. image
     4. 5-day forecast
-    <!-- placed the formatting of the card on the HTML -->
+    <!-- placed the formatting of the card on the HTML will need to be altered-->
         a. 5-cards
         b. date
         c. images
@@ -137,4 +138,10 @@ C. City Search List functionality
     2. connect search with renders(x)
 D. UV Functionality (x)
 E. 5 day Forcast
+    1. hard html version (x) works partially
 
+Tweaks needed
+sidebar tweak to nav bar sidebar
+jumbotron to fix
+Cards dont generate in the row properly
+card sizing/spacing
