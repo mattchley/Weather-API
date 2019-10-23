@@ -135,4 +135,6 @@ B. Ajax functionality
 C. City Search List functionality
     1. works without init()???
     2. connect search with renders(x)
+D. UV Functionality (x)
+E. 5 day Forcast
 
