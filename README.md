@@ -145,3 +145,4 @@ sidebar tweak to nav bar sidebar
 jumbotron to fix
 Cards dont generate in the row properly
 card sizing/spacing
+need to put everything in imperial units

@@ -66,26 +66,6 @@
         var mainWeatherWind = $('#main-wind')
         var mainWeatherUV = $('#main-UV')
 
-        // 5Day content
-        var fiveWeatherTitleOne = $('#five-title-one');
-        var fiveWeatherTempOne = $('#five-temp-one');
-        var fiveWeatherHumidityOne = $('#five-humidity-one');
-
-        var fiveWeatherTitleTwo = $('#five-title-two');
-        var fiveWeatherTempTwo = $('#five-temp-two');
-        var fiveWeatherHumidityTwo = $('#five-temp-two');
-
-        var fiveWeatherTitleThree = $('#five-title-three');
-        var fiveWeatherTempThree = $('#five-temp-three');
-        var fiveWeatherHumidityThree = $('#five-humidity-three');
-
-        var fiveWeatherTitleFour = $('#five-title-four');
-        var fiveWeatherTempFour = $('#five-temp-four');
-        var fiveWeatherHumidityFour = $('#five-humidity-four');
-
-        var fiveWeatherTitleFive = $('#five-title-five');
-        var fiveWeatherTempFive = $('#five-temp-five');
-        var fiveWeatherHumidityFive = $('#five-humidityfive');
 
         var APIKey = "3a92bc0a0ca29575a3569a00c0268022";
         var queryURL = "https://api.openweathermap.org/data/2.5/weather?" +
@@ -180,7 +160,10 @@
                         .then(function (response) {
                             console.log(response)
                             // only generates partially will need a for loop to work properly i think
-                            for (i = 0; i < 4; i++) {
+                            //  seems to do some hour parts
+                            fiveDayData = response.list
+                            for (i = 0; i < fiveDayData.length; i++) {
+                                // need the i++ to go up 7 or 8 everytime
                                 var data = response.list[i]
                                 var fiveDayTitle = $('<h5>');
                                 var fiveDayTemp = $('<p>');
@@ -192,8 +175,8 @@
                                 card.attr('class', 'card')
 
                                 fiveDayTitle.text(response.list[i].dt_txt)
-                                fiveDayTemp.text(response.list[i].main.temp)
-                                fiveDayHumidity.text(response.list[i].main.humidity)
+                                fiveDayTemp.text('Temp: ' + response.list[i].main.temp + 'F')
+                                fiveDayHumidity.text('Humidity: ' + response.list[i].main.humidity + '%')
 
                                 card.append(fiveDayTitle)
                                 card.append(fiveDayTemp)
