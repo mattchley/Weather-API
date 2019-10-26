@@ -124,7 +124,7 @@ A. Using bootstrap
         e. UV index number with color coordination(x)
         f. image
     4. 5-day forecast
-    <!-- placed the formatting of the card on the HTML will need to be altered-->
+    <!-- now works as a for loop-->
         a. 5-cards
         b. date
         c. images
@@ -141,8 +141,10 @@ E. 5 day Forcast
     1. hard html version (x) works partially
 
 Tweaks needed
-sidebar tweak to nav bar sidebar
-jumbotron to fix
-Cards dont generate in the row properly
-card sizing/spacing
-need to put everything in imperial units
+put the render functions to run when click 'search' (x) fixed!!!
+
+sidebar tweak to nav bar sidebar or make it a specific height
+jumbotron to fix (decent currently)
+Cards dont generate in the row properly (woking with for loop X)
+card sizing/spacing (working with for loop X)
+need to put everything in imperial units (can change the URL for the AJAX on all to allow for imperial)
