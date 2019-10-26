@@ -24,7 +24,7 @@
                         aria-label="Search">
                     <button class="btn btn-outline-success my-2 my-sm-0" id="city-search" type="submit">City
                         Name</button>
-                    <button class="btn btn-outline-success my-2 my-sm-0" id="city-search" type="submit">Clear</button>
+                    <button class="btn btn-outline-success my-2 my-sm-0" id="reset" type="submit">Clear</button>
                 </form>
                 <ul id='city-list'></ul>
             </div>
@@ -214,6 +214,9 @@
             renderStoredCity();
             renderMainData(cityText);
             renderFiveDay(cityText);
+        });
+        $('#reset').on('click', function (event) {
+            $('#5-day-content').remove();
         });
 
     </script>
