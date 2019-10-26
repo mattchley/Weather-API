@@ -70,13 +70,6 @@
         var mainWeatherWind = $('#main-wind')
         var mainWeatherUV = $('#main-UV')
 
-
-        // how to get the images
-        // var iconImage = response.weather[0].icon;
-        // var iconURL = "http://openweathermap.org/img/w/" + iconImage + ".png";
-        //    var image = $("<img>").attr("src", iconURL);
-
-
         function renderMainData(city) {
             var APIKey = "3a92bc0a0ca29575a3569a00c0268022";
             var queryURL = "https://api.openweathermap.org/data/2.5/weather?" +
@@ -100,12 +93,12 @@
                     var mainHumidity = response.main.humidity;
                     var mainWind = response.wind.speed;
                     var iconImage = response.weather[0].icon;
-                    var iconURL = "http://openweathermap.org/img/w/" + iconImage + ".png";
+                    var iconURL = "https://openweathermap.org/img/w/" + iconImage + ".png";
 
                     //    UV is a seperate call, Variables here
                     var lat = response.coord.lat;
                     var lon = response.coord.lon;
-                    var uvURL = "http://api.openweathermap.org/data/2.5/uvi?appid=3a92bc0a0ca29575a3569a00c0268022" + "&lat=" + lat + "&lon=" + lon;
+                    var uvURL = "https://api.openweathermap.org/data/2.5/uvi?appid=3a92bc0a0ca29575a3569a00c0268022" + "&lat=" + lat + "&lon=" + lon;
 
                     // Generate content
 
@@ -146,7 +139,7 @@
                     var lon = response.coord.lon;
                     var fiveDayContent = $("#5-day-content")
 
-                    var fiveURL = "http://api.openweathermap.org/data/2.5/forecast?appid=3a92bc0a0ca29575a3569a00c0268022&" + "&lat=" + lat + "&lon=" + lon + "&units=imperial";
+                    var fiveURL = "https://api.openweathermap.org/data/2.5/forecast?appid=3a92bc0a0ca29575a3569a00c0268022&" + "&lat=" + lat + "&lon=" + lon + "&units=imperial";
                     $.ajax({
 
                         url: fiveURL,
@@ -154,10 +147,9 @@
                     })
                         .then(function (response) {
                             console.log(response)
-                            fiveDayData = response.list
+                            var fiveDayData = response.list
                             for (i = 0; i < fiveDayData.length; i += 8) {
-                                // need the i++ to go up 7 or 8 everytime
-                                console.log("i", i);
+                            
                                 var data = response.list[i]
                                 var fiveDayTitle = $('<h5>');
                                 var fiveDayIcon = $('<img>')
@@ -166,7 +158,7 @@
                                 var col = $('<div>')
                                 var card = $('<div>')
                                 var iconImage = response.list[i].weather[0].icon;
-                                var iconURL = "http://openweathermap.org/img/w/" + iconImage + ".png";
+                                var iconURL = "https://openweathermap.org/img/w/" + iconImage + ".png";
 
                                 fiveDayIcon.attr("src", iconURL)
                                 col.attr('class', 'col-2')
@@ -175,7 +167,7 @@
                                 fiveDayTitle.text(response.list[i].dt_txt)
                                 fiveDayTemp.text('Temp: ' + response.list[i].main.temp + 'F')
                                 fiveDayHumidity.text('Humidity: ' + response.list[i].main.humidity + '%')
-
+                                col.empty();
                                 card.append(fiveDayTitle)
                                 card.append(fiveDayIcon)
                                 card.append(fiveDayTemp)
@@ -184,6 +176,7 @@
                                 col.append(card)
                                 fiveDayContent.append(col)
                                 console.log(fiveDayData.length)
+                                
 
                             }
 
@@ -221,10 +214,6 @@
             renderStoredCity();
             renderMainData(cityText);
             renderFiveDay(cityText);
-        });
-
-        $("#city-search").on("click", function (event) {
-            $('#5-day-content').empty();
         });
 
     </script>
