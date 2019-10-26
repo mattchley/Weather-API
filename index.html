@@ -28,20 +28,24 @@
                 </form>
                 <ul id='city-list'></ul>
             </div>
-            <div class="row">
-                <div class="col-12 main">
-                    <div class="jumbotron">
-                        <h1 id="main-title" class="display-4"></h1>
-                        <image id='main-image'></image>
-                        <p id="main-temp" class="lead"></p>
-                        <p id="main-humidity" class="lead"></p>
-                        <p id="main-wind" class="lead"></p>
-                        <p id="main-UV" class="lead"></p>
-                    </div>
+            <div class="col-9 main">
+                <div class="jumbotron">
+                    <h1 id="main-title" class="display-4">Welcome!</h1>
+                    <image id='main-image'></image>
+                    <p id="main-temp" class="lead">Type in the city name you'd like to see.</p>
+                    <p id="main-humidity" class="lead"></p>
+                    <p id="main-wind" class="lead"></p>
+                    <p id="main-UV" class="lead"></p>
+                </div>
+                <div id="5-day-content" class="row">
+
                 </div>
             </div>
-            <div id="5-day-content" class="row"></div>
         </div>
+
+
+
+    </div>
     </div>
 
 
@@ -192,23 +196,19 @@
         }
 
 
-        function renderStoredCity() {
-
-            // Render a new li for each todo
-            for (var i = 0; i < cities.length; i++) {
-                var storedCities = cities[i];
-                var li = $('<li>');
-                li.text(storedCities);
-                citylist.append(li);
-            }
-        }
-
-
         function storeCities() {
             // Stringify and set "cities" key in localStorage to cities array
             localStorage.setItem("cities", JSON.stringify(cities));
         }
 
+        function renderStoredCity() {
+            var kitchen = JSON.parse(localStorage.getItem('cities'))
+            // Render a new li for each todo
+            console.log("retrieved cities: ",kitchen)
+            var li = $('<li>');
+                li.text(kitchen[kitchen.length - 1]);
+                citylist.prepend(li);
+        }
         $("#city-search").on("click", function (event) {
             event.preventDefault();
             var cityText = cityInput.val();
