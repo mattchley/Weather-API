@@ -141,6 +141,8 @@ E. 5 day Forcast
     1. hard html version (x) works partially
 
 Tweaks needed
+clear appends
+
 put the render functions to run when click 'search' (x) fixed!!!
 
 sidebar tweak to nav bar sidebar or make it a specific height

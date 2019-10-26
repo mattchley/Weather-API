@@ -24,6 +24,7 @@
                         aria-label="Search">
                     <button class="btn btn-outline-success my-2 my-sm-0" id="city-search" type="submit">City
                         Name</button>
+                    <button class="btn btn-outline-success my-2 my-sm-0" id="city-search" type="submit">Clear</button>
                 </form>
                 <ul id='city-list'></ul>
             </div>
@@ -31,6 +32,7 @@
                 <div class="col-12 main">
                     <div class="jumbotron">
                         <h1 id="main-title" class="display-4"></h1>
+                        <image id='main-image'></image>
                         <p id="main-temp" class="lead"></p>
                         <p id="main-humidity" class="lead"></p>
                         <p id="main-wind" class="lead"></p>
@@ -60,30 +62,17 @@
 
         // Main Content in Jumbotron
         var mainWeatherTitle = $('#main-title')
+        var mainWeatherImage = $('#main-image')
         var mainWeatherTemp = $('#main-temp')
         var mainWeatherHumidity = $('#main-humidity')
         var mainWeatherWind = $('#main-wind')
         var mainWeatherUV = $('#main-UV')
 
 
-
-
-
-        // init();
-
-        // function init() {
-        //     // Get stored cities from localStorage
-        //     // Parsing the JSON string to an object
-        //     var storedCities = localStorage.getItem("cities");
-
-        //     // If cities were retrieved from localStorage, update the cities array to it
-        //     if (storedCities !== null) {
-        //         cities = storedCities;
-        //     }
-
-        //     // Render cities to the DOM
-        //     // renderStoredCity();
-        // }
+        // how to get the images
+        // var iconImage = response.weather[0].icon;
+        // var iconURL = "http://openweathermap.org/img/w/" + iconImage + ".png";
+        //    var image = $("<img>").attr("src", iconURL);
 
 
         function renderMainData(city) {
@@ -108,7 +97,8 @@
                     var mainTemp = response.main.temp;
                     var mainHumidity = response.main.humidity;
                     var mainWind = response.wind.speed;
-                    var img = $('<img>');
+                    var iconImage = response.weather[0].icon;
+                    var iconURL = "http://openweathermap.org/img/w/" + iconImage + ".png";
 
                     //    UV is a seperate call, Variables here
                     var lat = response.coord.lat;
@@ -116,13 +106,12 @@
                     var uvURL = "http://api.openweathermap.org/data/2.5/uvi?appid=3a92bc0a0ca29575a3569a00c0268022" + "&lat=" + lat + "&lon=" + lon;
 
                     // Generate content
-                    // placeholder while i look for the image src
-                    // img.attr('src', response.weather[0].icon)
 
                     mainWeatherTitle.text(main + " " + "(" + date + ")");
-                    mainWeatherTemp.text('Temp: ' + mainTemp);
-                    mainWeatherHumidity.text('Humidity: ' + mainHumidity);
-                    mainWeatherWind.text('Wind Speed: ' + mainWind);
+                    mainWeatherImage.attr("src", iconURL)
+                    mainWeatherTemp.text('Temp: ' + mainTemp + 'F');
+                    mainWeatherHumidity.text('Humidity: ' + mainHumidity + '%');
+                    mainWeatherWind.text('Wind Speed: ' + mainWind + 'MPH');
 
                     $.ajax({
 
@@ -155,7 +144,7 @@
                     var lon = response.coord.lon;
                     var fiveDayContent = $("#5-day-content")
 
-                    var fiveURL = "http://api.openweathermap.org/data/2.5/forecast?appid=3a92bc0a0ca29575a3569a00c0268022&" + "&lat=" + lat + "&lon=" + lon
+                    var fiveURL = "http://api.openweathermap.org/data/2.5/forecast?appid=3a92bc0a0ca29575a3569a00c0268022&" + "&lat=" + lat + "&lon=" + lon + "&units=imperial";
                     $.ajax({
 
                         url: fiveURL,
@@ -169,11 +158,15 @@
                                 console.log("i", i);
                                 var data = response.list[i]
                                 var fiveDayTitle = $('<h5>');
+                                var fiveDayIcon = $('<img>')
                                 var fiveDayTemp = $('<p>');
                                 var fiveDayHumidity = $('<p>');
                                 var col = $('<div>')
                                 var card = $('<div>')
+                                var iconImage = response.list[i].weather[0].icon;
+                                var iconURL = "http://openweathermap.org/img/w/" + iconImage + ".png";
 
+                                fiveDayIcon.attr("src", iconURL)
                                 col.attr('class', 'col-2')
                                 card.attr('class', 'card')
 
@@ -182,6 +175,7 @@
                                 fiveDayHumidity.text('Humidity: ' + response.list[i].main.humidity + '%')
 
                                 card.append(fiveDayTitle)
+                                card.append(fiveDayIcon)
                                 card.append(fiveDayTemp)
                                 card.append(fiveDayHumidity)
 
@@ -229,6 +223,10 @@
             renderStoredCity();
             renderMainData(cityText);
             renderFiveDay(cityText);
+        });
+
+        $("#city-search").on("click", function (event) {
+            $('#5-day-content').empty();
         });
 
     </script>
